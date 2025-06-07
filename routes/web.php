@@ -40,18 +40,6 @@ Route::middleware(['auth'])->prefix('admin')->as('admin.')->group(function () {
     Route::delete('users/destroy', [UsersController::class, 'massDestroy'])->name('users.massDestroy');
     Route::resource('users', UsersController::class);
 
-// Category
-    Route::delete('categories/destroy', [CategoryController::class, 'massDestroy'])->name('categories.massDestroy');
-    Route::post('categories/media', [CategoryController::class, 'storeMedia'])->name('categories.storeMedia');
-    Route::post('categories/ckmedia', [CategoryController::class, 'storeCKEditorImages'])->name('categories.storeCKEditorImages');
-    Route::resource('categories', CategoryController::class);
-
-// Product
-    Route::delete('products/destroy', [ProductController::class, 'massDestroy'])->name('products.massDestroy');
-    Route::post('products/media', [ProductController::class, 'storeMedia'])->name('products.storeMedia');
-    Route::post('products/ckmedia', [ProductController::class, 'storeCKEditorImages'])->name('products.storeCKEditorImages');
-    Route::resource('products', ProductController::class);
-
 // Patient
     Route::delete('patients/destroy', [PatientController::class, 'massDestroy'])->name('patients.massDestroy');
     Route::post('patients/media', [PatientController::class, 'storeMedia'])->name('patients.storeMedia');
