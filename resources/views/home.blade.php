@@ -37,7 +37,7 @@
             {{-- بحث المرضى --}}
             <form method="GET" action="{{ route('admin.home') }}" class="mb-3">
                 <div class="input-group">
-                    <input type="text" name="search" value="{{ request('search') }}" class="form-control" placeholder="{{ __('Search Patients...') }}">
+                    <input type="text" name="search" value="{{ request('search') }}" class="form-control" placeholder="{{ trans('global.search_patients') }}">
                     <button type="submit" class="btn btn-outline-secondary">{{ trans('global.search') }}</button>
                 </div>
             </form>
@@ -68,9 +68,7 @@
                             <th>
                                 {{ trans('cruds.patient.fields.national_id') }}
                             </th>
-                            <th>
-                                {{ trans('cruds.patient.fields.photo') }}
-                            </th>
+
                             <th>
                                 &nbsp;
                             </th>
@@ -93,9 +91,7 @@
                                 <td>
                                     {{ $patient->gender ?? '' }}
                                 </td>
-                                <td>
-                                    {{ $patient->phone ?? '' }}
-                                </td>
+
                                 <td>
                                     {{ $patient->national_id ?? '' }}
                                 </td>
@@ -114,7 +110,7 @@
                                     @endcan
 
 
-                                    <a href="{{ route('admin.diagnoses.create', ['patient_id' => $patient->id]) }}" class="btn btn-sm btn-success">
+                                    <a href="{{ route('admin.diagnoses.create', ['patient_id' => $patient->id]) }}" class="btn btn-xs btn-success">
                                         {{trans('cruds.buttons.add_diagnosis') }}
                                     </a>
 
@@ -126,6 +122,11 @@
                                             <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
                                         </form>
                                     @endcan
+                                        @can('patient_edit')
+                                            <a class="btn btn-xs btn-info" href="{{ route('admin.patients.edit', $patient->id) }}">
+                                                {{ trans('global.edit') }}
+                                            </a>
+                                        @endcan
                                 </td>
                             </tr>
                         @endforeach
@@ -135,7 +136,8 @@
             </div>
 
             {{-- عرض أزرار الصفحات لو كان هناك pagination --}}
-            {{ $patients->withQueryString()->links() }}
+            {{ $patients->withQueryString()->links('pagination::bootstrap-5') }}
+
 
         </div>
     </div>

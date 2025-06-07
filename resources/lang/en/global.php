@@ -33,6 +33,7 @@ return [
     'send_password'                  => 'Send Password Reset Link',
     'save'                           => 'Save',
     'search'                         => 'Search',
+    'search_patients'                =>'Search Patients...',
     'searching'                      => 'Searching',
     'no_results'                     => 'No results',
     'results_could_not_be_loaded'    => 'The results could not be loaded',

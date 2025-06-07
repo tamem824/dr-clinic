@@ -89,12 +89,13 @@
                         </label>
                         <textarea class="form-control" name="medical_history" id="medical_history">{{ old('medical_history') }}</textarea>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label for="photo">
-                            <i class="fa fa-image mr-1 text-primary"></i> {{ trans('cruds.patient.fields.photo') }}
-                        </label>
-                        <div class="needsclick dropzone" id="photo-dropzone"></div>
-                    </div>
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+
+                            <button class="btn btn-danger" type="submit" form="patient-form">
+                                <i class="fa fa-save"></i> {{ trans('global.save') }}
+                            </button>
+                        </div>
                 </div>
             </form>
         </div>

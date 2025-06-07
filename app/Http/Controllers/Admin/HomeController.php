@@ -15,7 +15,7 @@ class HomeController
             ->when($search, function($query, $search) {
                 return $query->where('fullname', 'like', "%{$search}%");
             })
-            ->paginate(5);
+            ->paginate(50);
         return view('home',compact('patients'));
     }
 }

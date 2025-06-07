@@ -97,10 +97,10 @@ return [
     ],
 
     'buttons' => [
-        'add_patient'    => 'إضافة مريض جديد',
-        'add_diagnosis'  => 'إضافة تشخيص جديد',
-        'list_patients'  => 'عرض قائمة المرضى',
-        'list_diagnoses' => 'عرض قائمة التشخيصات',
+        'add_patient'    => 'إضافة مريض ',
+        'add_diagnosis'  => ' تشخيص ',
+        'list_patients'  => ' المرضى',
+        'list_diagnoses' => ' التشخيصات',
     ],
 
     'allRightsReserved' => 'جميع الحقوق محفوظة',

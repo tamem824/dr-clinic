@@ -21,9 +21,7 @@
                     <tr>
                         <th width="10">
                         </th>
-                        <th>
-                            {{ trans('cruds.patient.fields.id') }}
-                        </th>
+
                         <th>
                             {{ trans('cruds.patient.fields.patient_number') }}
                         </th>
@@ -39,9 +37,7 @@
                         <th>
                             {{ trans('cruds.patient.fields.national_id') }}
                         </th>
-                        <th>
-                            {{ trans('cruds.patient.fields.photo') }}
-                        </th>
+
                         <th>
                             &nbsp;
                         </th>
@@ -52,9 +48,7 @@
                         <tr data-entry-id="{{ $patient->id }}">
                             <td>
                             </td>
-                            <td>
-                                {{ $patient->id ?? '' }}
-                            </td>
+
                             <td>
                                 {{ $patient->patient_number ?? '' }}
                             </td>
@@ -70,13 +64,7 @@
                             <td>
                                 {{ $patient->national_id ?? '' }}
                             </td>
-                            <td>
-                                @if($patient->photo)
-                                    <a href="{{ $patient->photo->getUrl() }}" target="_blank" style="display: inline-block">
-                                        <img src="{{ $patient->photo->getUrl('thumb') }}">
-                                    </a>
-                                @endif
-                            </td>
+
                             <td>
                                 @can('patient_show')
                                     <a class="btn btn-xs btn-primary" href="{{ route('admin.patients.show', $patient->id) }}">
@@ -89,6 +77,9 @@
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
+                                    <a href="{{ route('admin.diagnoses.create', ['patient_id' => $patient->id]) }}" class="btn btn-xs btn-success">
+                                        {{trans('cruds.buttons.add_diagnosis') }}
+                                    </a>
 
                                 @can('patient_delete')
                                     <form action="{{ route('admin.patients.destroy', $patient->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
@@ -154,4 +145,4 @@
         });
     })
 </script>
-@endsection 
+@endsection
