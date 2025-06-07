@@ -94,7 +94,7 @@
                                     {{ $patient->gender ?? '' }}
                                 </td>
                                 <td>
-                                    {{ $patient->mobile ?? '' }}
+                                    {{ $patient->phone ?? '' }}
                                 </td>
                                 <td>
                                     {{ $patient->national_id ?? '' }}
