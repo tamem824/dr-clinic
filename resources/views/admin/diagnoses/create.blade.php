@@ -1,0 +1,148 @@
+@extends('layouts.admin')
+
+@push('styles')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            direction: rtl;
+            text-align: right;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .input-icon {
+            position: relative;
+            width: 100%;
+        }
+        .input-icon i {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            color: #aaa;
+            pointer-events: none;
+            font-size: 1rem;
+        }
+        .input-icon textarea {
+            padding-right: 2rem;
+            font-size: 0.9rem;
+            resize: vertical;
+            min-height: 50px; /* أقل ارتفاع */
+            max-height: 90px;
+            line-height: 1.2;
+        }
+        /* input للحقل القصير */
+        input.form-control, select.form-control {
+            height: 35px;
+            font-size: 0.9rem;
+            padding-right: 2rem;
+        }
+    </style>
+@endpush
+
+@section('content')
+    <div class="card">
+        <div class="card-header">
+            {{ trans('global.create') }} {{ trans('cruds.diagnosis.title_singular') }}
+        </div>
+
+        <div class="card-body">
+            <form method="POST" action="{{ route('admin.diagnoses.store') }}" enctype="multipart/form-data">
+                @csrf
+
+                <div class="form-group">
+                    <label class="required" for="patient_id">{{ trans('cruds.diagnosis.fields.patient') }}</label>
+                    <div class="input-icon">
+                        <select class="form-control form-control-sm select2 {{ $errors->has('patient_id') ? 'is-invalid' : '' }}" name="patient_id" id="patient_id" required>
+                            @foreach($patients as $id => $entry)
+                                <option value="{{ $id }}" {{ old('patient_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                            @endforeach
+                        </select>
+                        <i class="fas fa-user-injured"></i>
+                    </div>
+                    @if($errors->has('patient_id'))
+                        <div class="invalid-feedback">{{ $errors->first('patient_id') }}</div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.diagnosis.fields.patient_helper') }}</span>
+                </div>
+
+                {{-- Textareas arranged 2 per row --}}
+                <div class="row">
+                    @php
+                        $textareas = [
+                            'chief_complaint', 'medical_history', 'clinical_examination', 'abdominal_examination',
+                            'abdominal_ultrasound', 'laboratory_tests', 'upper_endoscopy', 'lower_endoscopy',
+                            'ercp', 'further_investigations', 'diagnosis', 'treatment', 'follow_up', 'notes'
+                        ];
+
+                        $icons = [
+                            'chief_complaint' => 'fas fa-notes-medical',
+                            'medical_history' => 'fas fa-file-medical-alt',
+                            'clinical_examination' => 'fas fa-stethoscope',
+                            'abdominal_examination' => 'fas fa-procedures',
+                            'abdominal_ultrasound' => 'fas fa-ultrasound',
+                            'laboratory_tests' => 'fas fa-vials',
+                            'upper_endoscopy' => 'fas fa-video',
+                            'lower_endoscopy' => 'fas fa-video',
+                            'ercp' => 'fas fa-x-ray',
+                            'further_investigations' => 'fas fa-search',
+                            'diagnosis' => 'fas fa-diagnoses',
+                            'treatment' => 'fas fa-pills',
+                            'follow_up' => 'fas fa-calendar-check',
+                            'notes' => 'fas fa-clipboard'
+                        ];
+                    @endphp
+
+                    @foreach($textareas as $field)
+                        <div class="form-group col-md-6">
+                            <label for="{{ $field }}">{{ trans("cruds.diagnosis.fields.$field") }}</label>
+                            <div class="input-icon">
+                                <textarea class="form-control {{ $errors->has($field) ? 'is-invalid' : '' }}"
+                                          name="{{ $field }}" id="{{ $field }}" rows="3">{{ old($field) }}</textarea>
+                                <i class="{{ $icons[$field] ?? 'fas fa-file-alt' }}"></i>
+                            </div>
+                            @if($errors->has($field))
+                                <div class="invalid-feedback">{{ $errors->first($field) }}</div>
+                            @endif
+                            <span class="help-block">{{ trans("cruds.diagnosis.fields.{$field}_helper") }}</span>
+                        </div>
+                    @endforeach
+                </div>
+
+                {{-- Short Fields in one row --}}
+                <div class="row">
+                    @php
+                        $shortFields = ['sat', 'rr', 'hr', 'bp'];
+                        $shortIcons = [
+                            'sat' => 'fas fa-lungs',
+                            'rr' => 'fas fa-wind',
+                            'hr' => 'fas fa-heartbeat',
+                            'bp' => 'fas fa-tachometer-alt'
+                        ];
+                    @endphp
+                    @foreach($shortFields as $field)
+                        <div class="form-group col-md-3">
+                            <label for="{{ $field }}">{{ trans("cruds.diagnosis.fields.$field") }}</label>
+                            <div class="input-icon">
+                                <input class="form-control form-control-sm {{ $errors->has($field) ? 'is-invalid' : '' }}"
+                                       type="text" name="{{ $field }}" id="{{ $field }}" value="{{ old($field, '') }}">
+                                <i class="{{ $shortIcons[$field] }}"></i>
+                            </div>
+                            @if($errors->has($field))
+                                <div class="invalid-feedback">{{ $errors->first($field) }}</div>
+                            @endif
+                            <span class="help-block">{{ trans("cruds.diagnosis.fields.{$field}_helper") }}</span>
+                        </div>
+                    @endforeach
+                </div>
+
+                <div class="form-group mt-3">
+                    <button class="btn btn-danger" type="submit">
+                        {{ trans('global.save') }}
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+@endsection
