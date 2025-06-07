@@ -38,7 +38,7 @@
 
             <!-- الروابط اليمنى -->
             @if(count(config('panel.available_languages', [])) > 1)
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link" data-toggle="dropdown" href="#">
                             {{ strtoupper(app()->getLocale()) }}

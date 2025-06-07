@@ -103,3 +103,40 @@ div.dt-button-collection {
     background-color: rgba(128, 128, 128, 0.1);
     font-weight: bolder;
 }
+
+/* ///////////////// New Style ///////////////// */
+html[dir="rtl"]{
+    direction: rtl;
+}
+html[dir="rtl"] body{
+    text-align: right;
+}
+html[dir="rtl"] .main-sidebar{
+    left: auto;
+    right: 0;
+}
+html[dir="rtl"] .content-wrapper{
+    margin-left: 0 !important;
+    margin-right: 220px !important;
+}
+html[dir="rtl"] .main-header{
+    margin-left: 0;
+    margin-right: 250px;
+}
+html[dir="rtl"] .nav-sidebar{
+padding-right: 0 ;
+}
+.navbar-nav:first-child{
+    margin-inline-start: auto;
+}
+html[dir="rtl"] .dropdown-menu-right{
+    right: auto;
+    left: 0;
+}
+@media (min-width: 992px) {
+    html[dir="rtl"] .sidebar-mini.sidebar-collapse .content-wrapper, .sidebar-mini.sidebar-collapse .main-footer,
+     .sidebar-mini.sidebar-collapse .main-header {
+      margin-left: 0 !important;
+      margin-right: 4.6rem !important;
+    }
+  }
