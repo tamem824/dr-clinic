@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use PatientSeeder;
+use Database\Seeders\PatientSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,11 +11,13 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             PermissionsTableSeeder::class,
-            RolesTableSeeder::class,
+
             PermissionRoleTableSeeder::class,
             UsersTableSeeder::class,
             RoleUserTableSeeder::class,
-            PatientSeeder::class
+            PatientSeeder::class,
+            DiagnosesSeeder::class
+
         ]);
     }
 }

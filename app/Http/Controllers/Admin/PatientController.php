@@ -24,7 +24,8 @@ class PatientController extends Controller
     {
         abort_if(Gate::denies('patient_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $patients = Patient::with(['media'])->paginate(50);
+        $patients = Patient::select('id', 'patient_number', 'fullname', 'gender', 'mobile', 'national_id')->get();
+
 
         return view('admin.patients.index', compact('patients'));
     }
