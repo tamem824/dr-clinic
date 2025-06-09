@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="col-md-6 col-lg-3">
-                    <a href="{{ route('admin.diagnoses.index') }}" class="btn btn-warning btn-lg w-100 py-4">
+                    <a href="{{ route('admin.diagnoses.index') }}" class="btn btn-warning btn-lg w-100 py-4 text-white">
                         <i class="fa-solid fa-notes-medical me-2"></i>
                         {{ trans('cruds.buttons.list_diagnoses') }}
                     </a>
@@ -38,7 +38,7 @@
             <form method="GET" action="{{ route('admin.home') }}" class="mb-3">
                 <div class="input-group">
                     <input type="text" name="search" value="{{ request('search') }}" class="form-control" placeholder="{{ trans('global.search_patients') }}">
-                    <button type="submit" class="btn btn-outline-secondary">{{ trans('global.search') }}</button>
+                    <button type="submit" class="btn btn-outline-primary fw-bold">{{ trans('global.search') }}</button>
                 </div>
             </form>
 

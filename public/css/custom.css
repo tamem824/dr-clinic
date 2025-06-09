@@ -111,11 +111,21 @@ div.dt-button-collection {
 
 /* ///////////////// New Style ///////////////// */
 /* dashboard page */
+ .main-sidebar,.content-wrapper,.main-header  {
+    transition: all 1s ease-in-out;
+}
 .navbar ul {
     list-style: none;
     margin-bottom: 0;
 }
-
+.nav-sidebar > .nav-item{
+    width: 100%;
+    margin-bottom: 5px;
+}
+.sidebar-collapse .nav-sidebar > .nav-item .nav-icon{
+    margin-inline-start: -1px !important;
+    margin-inline-end: 5px !important;
+}
 html[dir="rtl"] {
     direction: rtl;
 }
@@ -127,6 +137,7 @@ html[dir="rtl"] body {
 html[dir="rtl"] .main-sidebar {
     left: auto;
     right: 0;
+    transition: all 1s ease-in-out;
 }
 
 html[dir="rtl"] .content-wrapper {
@@ -166,12 +177,24 @@ html[dir="rtl"] .dropdown-menu-right {
     html[dir="rtl"] .main-sidebar {
         left: auto;
         right: -100%;
+        padding-top: 50px;
+        transform: translateX(0%) !important;
+    }
+    html[dir="rtl"] .sidebar-open .main-sidebar {
+        left: auto !important;
+        right: 0 !important;
+        z-index: 1100;
     }
 
-    html[dir="rtl"] .sidebar-open .main-sidebar {
-        left: auto;
-        right: 0;
-        padding-top: 65px;
+    .sidebar-open .main-header {
+        z-index: 1101;
+        background-color: #343a40 !important;
+        transition: all 1s ease-in-out;
+    }
+
+    .sidebar-open .main-header i {
+        color: #fff !important;
+        transition: all 1s ease-in-out;
     }
 
     html[dir="rtl"] .content-wrapper {
@@ -190,28 +213,35 @@ html[dir="rtl"] .dropdown-menu-right {
 .dataTables_filter {
     display: inline-flex;
 }
+
 .dataTables_length,
-.dataTables_filter{
+.dataTables_filter {
     width: 20%;
 
 }
-.dt-buttons{
+
+.dt-buttons {
     width: 60%;
 }
+
 .dataTables_length label select,
-.dataTables_filter label input{
+.dataTables_filter label input {
     margin: 0 10px;
 }
+
 .dataTables_length label,
 .dataTables_filter label {
     display: flex;
 }
+
 @media (max-width: 992px) {
+
     .dataTables_length,
     .dt-buttons,
     .dataTables_filter {
-    width: auto;
+        width: auto;
     }
+
     .dt-buttons {
         display: flex;
         flex-wrap: wrap;
@@ -221,3 +251,31 @@ html[dir="rtl"] .dropdown-menu-right {
         margin-bottom: 10px;
     }
 }
+.dataTables_info{
+    margin: 10px 0;
+}
+html[dir="rtl"] .input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .input-group:not(.has-validation) > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+  }
+  .card-header::after{
+    display: none !important;
+  }
+  .card-header{
+    font-weight: bold;
+  }
+  .card-header span{
+    font-weight: bold;
+  }
+  textarea.form-control{
+    height: 38px;
+    overflow-y: hidden;
+  }
