@@ -47,10 +47,8 @@
 </style>
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="#" class="brand-link">
-        <span class="brand-text font-weight-light">{{ trans('panel.site_title') }}</span>
-    </a>
+
+
 
     <!-- Sidebar -->
     <div class="sidebar p-3">

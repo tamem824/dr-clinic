@@ -10,31 +10,28 @@
         .form-group label {
             font-weight: bold;
         }
-        .input-icon {
-            position: relative;
-            width: 100%;
-        }
-        .input-icon i {
-            position: absolute;
-            top: 50%;
-            right: 10px;
-            transform: translateY(-50%);
-            color: #aaa;
-            pointer-events: none;
-            font-size: 1rem;
-        }
-        .input-icon textarea {
-            padding-right: 2rem;
-            font-size: 0.9rem;
+        textarea.form-control {
             resize: vertical;
             min-height: 50px;
             max-height: 90px;
             line-height: 1.2;
+            font-size: 0.9rem;
         }
         input.form-control, select.form-control {
             height: 35px;
             font-size: 0.9rem;
-            padding-right: 2rem;
+        }
+        /* تعديل لتوجيه أيقونات input-group في RTL */
+        .input-group-prepend {
+            margin-left: 0.5rem;
+            margin-right: 0;
+        }
+        .input-group-text {
+            background-color: #e9ecef;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            font-size: 1rem;
+            color: #6c757d;
         }
     </style>
 @endpush
@@ -52,13 +49,15 @@
 
                 <div class="form-group">
                     <label class="required" for="patient_id">{{ trans('cruds.diagnosis.fields.patient') }}</label>
-                    <div class="input-icon">
-                        <select class="form-control form-control-sm select2 {{ $errors->has('patient_id') ? 'is-invalid' : '' }}" name="patient_id" id="patient_id" required>
+                    <div class="input-group input-group-sm">
+                        <select class="form-control select2 {{ $errors->has('patient_id') ? 'is-invalid' : '' }}" name="patient_id" id="patient_id" required>
                             @foreach($patients as $id => $entry)
                                 <option value="{{ $id }}" {{ (old('patient_id') ?? $diagnosis->patient_id) == $id ? 'selected' : '' }}>{{ $entry }}</option>
                             @endforeach
                         </select>
-                        <i class="fas fa-user-injured"></i>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user-injured"></i></span>
+                        </div>
                     </div>
                     @if($errors->has('patient_id'))
                         <div class="invalid-feedback">{{ $errors->first('patient_id') }}</div>
@@ -95,10 +94,12 @@
                     @foreach($textareas as $field)
                         <div class="form-group col-md-6">
                             <label for="{{ $field }}">{{ trans("cruds.diagnosis.fields.$field") }}</label>
-                            <div class="input-icon">
+                            <div class="input-group input-group-sm">
                                 <textarea class="form-control {{ $errors->has($field) ? 'is-invalid' : '' }}"
                                           name="{{ $field }}" id="{{ $field }}" rows="3">{{ old($field, $diagnosis->$field) }}</textarea>
-                                <i class="{{ $icons[$field] ?? 'fas fa-file-alt' }}"></i>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="{{ $icons[$field] ?? 'fas fa-file-alt' }}"></i></span>
+                                </div>
                             </div>
                             @if($errors->has($field))
                                 <div class="invalid-feedback">{{ $errors->first($field) }}</div>
@@ -121,10 +122,12 @@
                     @foreach($shortFields as $field)
                         <div class="form-group col-md-3">
                             <label for="{{ $field }}">{{ trans("cruds.diagnosis.fields.$field") }}</label>
-                            <div class="input-icon">
-                                <input class="form-control form-control-sm {{ $errors->has($field) ? 'is-invalid' : '' }}"
+                            <div class="input-group input-group-sm">
+                                <input class="form-control {{ $errors->has($field) ? 'is-invalid' : '' }}"
                                        type="text" name="{{ $field }}" id="{{ $field }}" value="{{ old($field, $diagnosis->$field) }}">
-                                <i class="{{ $shortIcons[$field] }}"></i>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="{{ $shortIcons[$field] }}"></i></span>
+                                </div>
                             </div>
                             @if($errors->has($field))
                                 <div class="invalid-feedback">{{ $errors->first($field) }}</div>

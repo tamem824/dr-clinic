@@ -323,5 +323,10 @@ return [
     'leave'                          => 'Leave',
     'calendar'                       => 'Calendar',
     'messenger'                      => 'Messenger',
+    'version'                           => 'Version',
+    'visitOrSite'                    =>'Visit Or Site',
+    'welcome'=>                          'Welcome',
+    'site_title' => 'Dr.Bassel',
+    'by' => 'by',
 
 ];

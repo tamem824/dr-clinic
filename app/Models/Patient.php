@@ -30,12 +30,18 @@ class Patient extends Model implements HasMedia
         'birthdate' => 'date',
     ];
 
+    public function diagnoses()
+    {
+        return $this->hasMany(Diagnosis::class);
+    }
+
     protected static function boot()
     {
         parent::boot();
 
         static::creating(function ($patient) {
             $patient->patient_number = 'PAT-' . str_pad(static::max('id') + 1, 6, '0', STR_PAD_LEFT);
+            $patient->saveQuietly();
         });
     }
 }

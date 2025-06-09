@@ -9,33 +9,23 @@
         }
         .form-group label {
             font-weight: bold;
-        }
-        .input-icon {
-            position: relative;
-            width: 100%;
-        }
-        .input-icon i {
-            position: absolute;
-            top: 50%;
-            right: 10px;
-            transform: translateY(-50%);
-            color: #aaa;
-            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             font-size: 1rem;
         }
-        .input-icon textarea {
-            padding-right: 2rem;
+        /* Textarea styling */
+        textarea.form-control {
             font-size: 0.9rem;
             resize: vertical;
-            min-height: 50px; /* أقل ارتفاع */
+            min-height: 50px;
             max-height: 90px;
             line-height: 1.2;
         }
-        /* input للحقل القصير */
+        /* Inputs height */
         input.form-control, select.form-control {
             height: 35px;
             font-size: 0.9rem;
-            padding-right: 2rem;
         }
     </style>
 @endpush
@@ -52,18 +42,30 @@
 
                 <div class="form-group">
                     <label class="required" for="patient_id">{{ trans('cruds.diagnosis.fields.patient') }}</label>
-                    <div class="input-icon">
-                        <select class="form-control form-control-sm select2 {{ $errors->has('patient_id') ? 'is-invalid' : '' }}" name="patient_id" id="patient_id" required>
-                            @foreach($patients as $id => $entry)
-                                <option value="{{ $id }}" {{ old('patient_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    <div class="input-group input-group-sm">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user-injured"></i></span>
+                        </div>
+                        <select class="form-control select2 {{ $errors->has('patient_id') ? 'is-invalid' : '' }}" name="patient_id" id="patient_id" required>
+                            @foreach($patients as $id => $fullname)
+                                <option value="{{ $id }}"
+                                @if(old('patient_id'))
+                                    @selected(old('patient_id') == $id)
+                                    @elseif(isset($patientId))
+                                    @selected($patientId == $id)
+                                    @endif
+                                >
+                                    {{ $fullname }}
+                                </option>
                             @endforeach
                         </select>
-                        <i class="fas fa-user-injured"></i>
                     </div>
-                    @if($errors->has('patient_id'))
-                        <div class="invalid-feedback">{{ $errors->first('patient_id') }}</div>
+                    @error('patient_id')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                    @if(trans('cruds.diagnosis.fields.patient_helper') != 'cruds.diagnosis.fields.patient_helper')
+                        <span class="help-block">{{ trans('cruds.diagnosis.fields.patient_helper') }}</span>
                     @endif
-                    <span class="help-block">{{ trans('cruds.diagnosis.fields.patient_helper') }}</span>
                 </div>
 
                 {{-- Textareas arranged 2 per row --}}
@@ -95,12 +97,12 @@
 
                     @foreach($textareas as $field)
                         <div class="form-group col-md-6">
-                            <label for="{{ $field }}">{{ trans("cruds.diagnosis.fields.$field") }}</label>
-                            <div class="input-icon">
-                                <textarea class="form-control {{ $errors->has($field) ? 'is-invalid' : '' }}"
-                                          name="{{ $field }}" id="{{ $field }}" rows="3">{{ old($field) }}</textarea>
+                            <label for="{{ $field }}">
                                 <i class="{{ $icons[$field] ?? 'fas fa-file-alt' }}"></i>
-                            </div>
+                                {{ trans("cruds.diagnosis.fields.$field") }}
+                            </label>
+                            <textarea class="form-control {{ $errors->has($field) ? 'is-invalid' : '' }}"
+                                      name="{{ $field }}" id="{{ $field }}" rows="3">{{ old($field) }}</textarea>
                             @if($errors->has($field))
                                 <div class="invalid-feedback">{{ $errors->first($field) }}</div>
                             @endif
@@ -123,10 +125,12 @@
                     @foreach($shortFields as $field)
                         <div class="form-group col-md-3">
                             <label for="{{ $field }}">{{ trans("cruds.diagnosis.fields.$field") }}</label>
-                            <div class="input-icon">
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="{{ $shortIcons[$field] }}"></i></span>
+                                </div>
                                 <input class="form-control form-control-sm {{ $errors->has($field) ? 'is-invalid' : '' }}"
                                        type="text" name="{{ $field }}" id="{{ $field }}" value="{{ old($field, '') }}">
-                                <i class="{{ $shortIcons[$field] }}"></i>
                             </div>
                             @if($errors->has($field))
                                 <div class="invalid-feedback">{{ $errors->first($field) }}</div>

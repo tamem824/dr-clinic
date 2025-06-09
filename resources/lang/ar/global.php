@@ -1,6 +1,11 @@
 <?php
 
 return [
+    'site_title' => 'د. باسل',
+    'welcome'                            =>'أهلاً',
+    'visitOrSite'                       =>' زورا موقعنا',
+    'by'                               => 'من قبل',
+    'version'                        =>'النسخة',
     'actions'                        => 'الإجراءات',
     'add'                            => 'إضافة',
     'allRightsReserved'              => 'جميع الحقوق محفوظة.',

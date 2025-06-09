@@ -133,12 +133,67 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.patients.index') }}">
+
+            <div class="card mt-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <span>{{ trans('cruds.diagnosis.title_singular') }}</span>
+                    <a class="btn btn-success btn-sm" href="{{ route('admin.diagnoses.create', ['patient_id' => $patient->id]) }}">
+                        {{ trans('global.add') }} {{ trans('cruds.diagnosis.title_singular') }}
+                    </a>
+                </div>
+                <div class="card-body">
+                    @if($patient->diagnoses->count())
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th>{{ trans('cruds.diagnosis.fields.id') }}</th>
+                                <th>{{ trans('cruds.diagnosis.fields.chief_complaint') }}</th>
+                                <th>{{ trans('cruds.diagnosis.fields.diagnosis') }}</th>
+                                <th>{{ trans('cruds.diagnosis.fields.treatment') }}</th>
+                                <th>{{ trans('cruds.diagnosis.fields.follow_up') }}</th>
+                                <th>{{ trans('cruds.diagnosis.fields.clinical_examination') }}</th>
+                                <th>{{ trans('global.actions') }}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($patient->diagnoses as $diagnosis)
+                                <tr>
+                                    <td>{{ $diagnosis->id }}</td>
+                                    <td>{{ Str::limit($diagnosis->chief_complaint, 30) }}</td>
+                                    <td>{{ Str::limit($diagnosis->diagnosis, 50) }}</td>
+                                    <td>{{ Str::limit($diagnosis->treatment, 50) }}</td>
+                                    <td>{{ Str::limit($diagnosis->follow_up, 30) }}</td>
+                                    <td>{{ Str::limit($diagnosis->clinical_examination, 30) }}</td>
+                                    <td>
+                                        <a class="btn btn-xs btn-primary" href="{{ route('admin.diagnoses.show', $diagnosis->id) }}">
+                                            {{ trans('global.view') }}
+                                        </a>
+                                        <a class="btn btn-xs btn-info" href="{{ route('admin.diagnoses.edit', $diagnosis->id) }}">
+                                            {{ trans('global.edit') }}
+                                        </a>
+                                        <form action="{{ route('admin.diagnoses.destroy', $diagnosis->id) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('هل أنت متأكد من حذف هذا التشخيص؟');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-xs btn-danger">
+                                                {{ trans('global.delete') }}
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    @else
+                        <p>{{ trans('cruds.diagnosis.no_records')  }}</p>
+                    @endif
+                </div>
+            </div>
+
+            <a class="btn btn-default" href="{{ route('admin.patients.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>
         </div>
     </div>
 </div>
-@endsection 
+@endsection

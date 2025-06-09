@@ -29,13 +29,15 @@ class DiagnosisController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request  $request)
     {
         abort_if(Gate::denies('diagnosis_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $patients = Patient::pluck('fullname', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $patientId = $request->get('patient_id');
+        $patients = \App\Models\Patient::pluck('fullname', 'id');
 
-        return view('admin.diagnoses.create', compact('patients'));
+
+        return view('admin.diagnoses.create', compact('patients','patientId'));
     }
 
     /**
