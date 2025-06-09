@@ -166,6 +166,7 @@ return [
             'deleted_at'              => 'Deleted at',
             'deleted_at_helper'       => ' ',
         ],
+        'no_records'=> 'No Records',
     ],
     'patient' => [
         'title'          => 'Patients',

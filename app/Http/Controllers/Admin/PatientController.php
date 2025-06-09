@@ -62,7 +62,7 @@ class PatientController extends Controller
     {
         abort_if(Gate::denies('patient_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $patient->load('media');
+        $patient->load('diagnoses');
 
         return view('admin.patients.edit', compact('patient'));
     }

@@ -53,6 +53,8 @@ return [
             'deleted_at'                 => 'تاريخ الحذف',
             'deleted_at_helper'          => '',
         ],
+        'no_records'=> ' لا يوجد سجلات ',
+
     ],
 
     'patient' => [
