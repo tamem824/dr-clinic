@@ -47,6 +47,10 @@
                             <span class="input-group-text"><i class="fas fa-user-injured"></i></span>
                         </div>
                         <select class="form-control select2 {{ $errors->has('patient_id') ? 'is-invalid' : '' }}" name="patient_id" id="patient_id" required>
+                            @if(!isset($patientId))
+                                <option value="" selected></option>
+                            @endif
+
                             @foreach($patients as $id => $fullname)
                                 <option value="{{ $id }}"
                                 @if(old('patient_id'))
@@ -59,6 +63,7 @@
                                 </option>
                             @endforeach
                         </select>
+
                     </div>
                     @error('patient_id')
                     <div class="invalid-feedback">{{ $message }}</div>
