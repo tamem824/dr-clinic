@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Patient extends Model implements HasMedia
+class Patient extends Model
 {
-    use HasFactory, InteractsWithMedia;
+    use HasFactory ;
 
     protected $fillable = [
         'patient_number',
@@ -41,7 +41,7 @@ class Patient extends Model implements HasMedia
 
         static::creating(function ($patient) {
             $patient->patient_number = 'PAT-' . str_pad(static::max('id') + 1, 6, '0', STR_PAD_LEFT);
-            $patient->saveQuietly();
+
         });
     }
 }
