@@ -35,11 +35,12 @@
 
     @media (max-width: 768px) {
         .main-sidebar {
-            width: 100%;
-            position: absolute;
-            z-index: 999;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
         }
-
+        .main-sidebar.active {
+            transform: translateX(0);
+        }
         .content-wrapper {
             margin-left: 0 !important;
         }

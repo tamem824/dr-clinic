@@ -20,6 +20,7 @@
                 <thead>
                     <tr>
                         <th width="10">
+
                         </th>
 
                         <th>
@@ -101,6 +102,8 @@
 
 @section('scripts')
 @parent
+<link href="https://cdn.datatables.net/select/1.3.3/css/select.dataTables.min.css" rel="stylesheet"/>
+<script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
 <script>
     $(function () {
         let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
