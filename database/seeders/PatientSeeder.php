@@ -12,7 +12,7 @@ class PatientSeeder extends Seeder
 
            'patient_number'=> '543',
             'fullname' => 'أحمد علي',
-            'birth_date' => '1990-05-15',
+            'birthdate' => '1990-05-15',
             'phone' => '0599123456',
 
         ]);
@@ -20,7 +20,7 @@ class PatientSeeder extends Seeder
         Patient::create([
             'patient_number'=> '544',
             'fullname' => 'سارة محمد',
-            'birth_date' => '1985-09-21',
+            'birthdate' => '1985-09-21',
             'phone' => '0599988776',
 
         ]);
