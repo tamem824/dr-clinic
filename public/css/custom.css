@@ -111,6 +111,9 @@ div.dt-button-collection {
 
 /* ///////////////// New Style ///////////////// */
 /* dashboard page */
+ .main-sidebar,.content-wrapper,.main-header  {
+    transition: all 1s ease-in-out;
+}
 .navbar ul {
     list-style: none;
     margin-bottom: 0;
@@ -127,6 +130,7 @@ html[dir="rtl"] body {
 html[dir="rtl"] .main-sidebar {
     left: auto;
     right: 0;
+    transition: all 1s ease-in-out;
 }
 
 html[dir="rtl"] .content-wrapper {
@@ -166,12 +170,24 @@ html[dir="rtl"] .dropdown-menu-right {
     html[dir="rtl"] .main-sidebar {
         left: auto;
         right: -100%;
+        padding-top: 50px;
     }
 
     html[dir="rtl"] .sidebar-open .main-sidebar {
         left: auto;
         right: 0;
-        padding-top: 65px;
+        z-index: 1100;
+    }
+
+    .sidebar-open .main-header {
+        z-index: 1101;
+        background-color: #343a40 !important;
+        transition: all 1s ease-in-out;
+    }
+
+    .sidebar-open .main-header i {
+        color: #fff !important;
+        transition: all 1s ease-in-out;
     }
 
     html[dir="rtl"] .content-wrapper {
@@ -190,28 +206,35 @@ html[dir="rtl"] .dropdown-menu-right {
 .dataTables_filter {
     display: inline-flex;
 }
+
 .dataTables_length,
-.dataTables_filter{
+.dataTables_filter {
     width: 20%;
 
 }
-.dt-buttons{
+
+.dt-buttons {
     width: 60%;
 }
+
 .dataTables_length label select,
-.dataTables_filter label input{
+.dataTables_filter label input {
     margin: 0 10px;
 }
+
 .dataTables_length label,
 .dataTables_filter label {
     display: flex;
 }
+
 @media (max-width: 992px) {
+
     .dataTables_length,
     .dt-buttons,
     .dataTables_filter {
-    width: auto;
+        width: auto;
     }
+
     .dt-buttons {
         display: flex;
         flex-wrap: wrap;
