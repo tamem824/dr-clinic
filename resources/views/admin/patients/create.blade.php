@@ -4,9 +4,9 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <span>{{ trans('global.create') }} {{ trans('cruds.patient.title_singular') }}</span>
-            <button class="btn btn-danger" type="submit" form="patient-form">
+           {{--  <button class="btn btn-danger" type="submit" form="patient-form">
                 <i class="fa fa-save"></i> {{ trans('global.save') }}
-            </button>
+            </button>--}}
         </div>
 
         <div class="card-body">
@@ -89,14 +89,12 @@
                         </label>
                         <textarea class="form-control" name="medical_history" id="medical_history">{{ old('medical_history') }}</textarea>
                     </div>
-                    <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
 
                             <button class="btn btn-danger" type="submit" form="patient-form">
                                 <i class="fa fa-save"></i> {{ trans('global.save') }}
                             </button>
                         </div>
-                </div>
             </form>
         </div>
     </div>
