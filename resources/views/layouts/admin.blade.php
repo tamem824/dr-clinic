@@ -42,7 +42,7 @@
 <div class="wrapper">
 
     <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
-        <ul class="container-fluid d-flex justify-content-between">
+        <ul class="container-fluid d-flex justify-content-end">
             <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
             </li>
