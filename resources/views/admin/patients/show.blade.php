@@ -119,7 +119,7 @@
                             {{ $patient->medical_history }}
                         </td>
                     </tr>
-                    <tr>
+                  {{--   <tr>
                         <th>
                             {{ trans('cruds.patient.fields.photo') }}
                         </th>
@@ -130,7 +130,7 @@
                                 </a>
                             @endif
                         </td>
-                    </tr>
+                    </tr> --}}
                 </tbody>
             </table>
 
