@@ -68,6 +68,7 @@ return [
     'delete_account_success'         => 'تم حذف الحساب بنجاح',
     'saved'                          => 'تم الحفظ.',
     'profile_information'            => 'معلومات الملف الشخصي',
+    'back_to_list'                   => 'العودة للقائمة',
     'datatables' => [
         'copy'          => 'نسخ',
         'csv'           => 'CSV',
