@@ -56,7 +56,7 @@ return [
         'no_records'=> ' لا يوجد سجلات ',
 
     ],
-
+    'no_records'=> ' لا يوجد سجلات ',
     'patient' => [
         'title'          => 'المرضى',
         'title_singular' => 'مريض',
@@ -103,6 +103,7 @@ return [
         'add_diagnosis'  => ' إضافة تشخيص ',
         'list_patients'  => ' المرضى',
         'list_diagnoses' => ' التشخيصات',
+
     ],
 
     'allRightsReserved' => 'جميع الحقوق محفوظة',
