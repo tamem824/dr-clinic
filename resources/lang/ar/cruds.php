@@ -100,7 +100,7 @@ return [
 
     'buttons' => [
         'add_patient'    => 'إضافة مريض ',
-        'add_diagnosis'  => ' تشخيص ',
+        'add_diagnosis'  => ' إضافة تشخيص ',
         'list_patients'  => ' المرضى',
         'list_diagnoses' => ' التشخيصات',
     ],
