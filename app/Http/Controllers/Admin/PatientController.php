@@ -64,7 +64,7 @@ class PatientController extends Controller
 
         $patient->load('media');
 
-        return view('admin.patients.edit', compact('patient'));
+        return view('admin.patients.edit', compact('diagnoses'));
     }
 
     public function update(UpdatePatientRequest $request, Patient $patient)

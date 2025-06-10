@@ -54,7 +54,7 @@ return [
             'deleted_at_helper'          => '',
         ],
     ],
-
+    'no_records'=> ' لا يوجد سجلات ',
     'patient' => [
         'title'          => 'المرضى',
         'title_singular' => 'مريض',
@@ -98,9 +98,10 @@ return [
 
     'buttons' => [
         'add_patient'    => 'إضافة مريض ',
-        'add_diagnosis'  => ' تشخيص ',
+        'add_diagnosis'  => ' إضافة تشخيص ',
         'list_patients'  => ' المرضى',
         'list_diagnoses' => ' التشخيصات',
+
     ],
 
     'allRightsReserved' => 'جميع الحقوق محفوظة',
