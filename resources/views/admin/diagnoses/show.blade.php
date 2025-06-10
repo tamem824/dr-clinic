@@ -72,7 +72,7 @@
             <a class="btn btn-secondary btn-sm btn-back" href="{{ route('admin.diagnoses.index') }}">
                 <i class="fas fa-arrow-left"></i> {{ trans('global.back_to_list') }}
             </a>
-
+            <div class="table-responsive">
             <table class="table diagnosis-table table-bordered table-striped">
                 <tbody>
                 <tr>
@@ -152,6 +152,7 @@
                 </tr>
                 </tbody>
             </table>
+            </div>
 
             <a class="btn btn-secondary btn-sm mt-3" href="{{ route('admin.diagnoses.index') }}">
                 <i class="fas fa-arrow-left"></i> {{ trans('global.back_to_list') }}
