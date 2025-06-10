@@ -1,50 +1,69 @@
 <style>
     .main-sidebar {
         width: 220px;
-        transition: width 0.3s ease;
-    }
-
-    .main-sidebar .brand-link {
-        font-size: 1rem;
-        text-align: center;
-    }
-
-    .sidebar .nav-link {
-        background-color: #343a40;
-        border-radius: 0.5rem;
-        margin-bottom: 12px;
-        padding: 12px 10px;
-        color: #fff;
-        transition: background-color 0.3s ease;
-    }
-
-    .sidebar .nav-link.active,
-    .sidebar .nav-link:hover {
-        background-color: #495057;
-        color: #fff;
-    }
-
-    .sidebar .nav-icon {
-        margin-right: 8px;
+        transition: transform 0.3s ease;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        z-index: 1040;
     }
 
     .content-wrapper {
-        margin-left: 220px !important;
+        margin-left: 220px;
         transition: margin-left 0.3s ease;
     }
 
     @media (max-width: 768px) {
         .main-sidebar {
             transform: translateX(-100%);
-            transition: transform 0.3s ease;
         }
+
         .main-sidebar.active {
             transform: translateX(0);
         }
+
         .content-wrapper {
-            margin-left: 0 !important;
+            margin-left: 0;
+        }
+
+        .content-wrapper.shifted {
+            margin-left: 220px;
         }
     }
+    .main-sidebar {
+        width: 220px;
+        transition: transform 0.3s ease;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        z-index: 1040;
+    }
+
+    .content-wrapper {
+        margin-left: 220px;
+        transition: margin-left 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+        .main-sidebar {
+            transform: translateX(-100%);
+        }
+
+        .main-sidebar.active {
+            transform: translateX(0);
+        }
+
+        .content-wrapper {
+            margin-left: 0;
+        }
+
+        .content-wrapper.shifted {
+            margin-left: 220px;
+        }
+    }
+
 </style>
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -101,5 +120,18 @@
             </ul>
         </nav>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggleBtn = document.getElementById('toggleSidebar');
+            const sidebar = document.querySelector('.main-sidebar');
+            const content = document.querySelector('.content-wrapper');
+
+            toggleBtn?.addEventListener('click', function () {
+                sidebar.classList.toggle('active');
+                content.classList.toggle('shifted');
+            });
+        });
+    </script>
+
     <!-- /.sidebar -->
 </aside>

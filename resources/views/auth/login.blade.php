@@ -53,12 +53,17 @@
                         </div>
                         <!-- /.col -->
                         <div class="col-8">
-                            <button type="submit" class="btn btn-primary w-100 d-flex align-items-center justify-content-center gap-2">
-                                <i class="fas fa-sign-in-alt"></i>
+                            <button type="submit" class="btn btn-primary w-100 d-flex align-items-center justify-content-center">
+                                <i class="fas fa-sign-in-alt" style="margin-right: 1rem;"></i>
                                 <span>{{ trans('global.login') }}</span>
                             </button>
-
                         </div>
+
+
+
+
+
+                    </div>
                         <!-- /.col -->
                     </div>
                 </form>
