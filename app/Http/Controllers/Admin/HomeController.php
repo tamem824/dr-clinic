@@ -14,7 +14,7 @@ class HomeController
         $patients = Patient::query()
             ->when($search, function($query, $search) {
                 return $query->where('fullname', 'like', "%{$search}%");
-            })
+            })->orderBy('id','desc')
             ->paginate(50);
         return view('home',compact('patients'));
     }

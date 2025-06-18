@@ -97,6 +97,18 @@ return [
             'deleted_at_helper'          => '',
         ],
     ],
+    'endoscopy' => [
+        'title_singular' => 'تنظير',
+        'title' => 'تنظيرات',
+        'fields' => [
+            'id' => 'الرقم التعريفي',
+            'patient' => 'المريض',
+            'type' => 'نوع التنظير',
+            'performed_at' => 'تاريخ الإجراء',
+        ],
+    ],
+
+
 
     'buttons' => [
         'add_patient'    => 'إضافة مريض ',

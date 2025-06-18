@@ -35,6 +35,17 @@ class Patient extends Model
         return $this->hasMany(Diagnosis::class);
     }
 
+    public function endoscopies()
+    {
+        return $this->hasMany(Endoscopy::class);
+
+    }
+    public function latestEndoscopy()
+    {
+        return $this->hasOne(Endoscopy::class)->latestOfMany();
+    }
+
+
     protected static function boot()
     {
         parent::boot();
