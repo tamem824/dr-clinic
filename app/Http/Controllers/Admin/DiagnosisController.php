@@ -21,7 +21,7 @@ class DiagnosisController extends Controller
     {
         abort_if(Gate::denies('diagnosis_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $diagnoses = Diagnosis::with(['patient'])->get();
+        $diagnoses = Diagnosis::with(['patient'])->orderBy('id','desc')->get();
 
         return view('admin.diagnoses.index', compact('diagnoses'));
     }

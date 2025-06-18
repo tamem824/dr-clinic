@@ -4,14 +4,15 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <span>{{ trans('global.create') }} {{ trans('cruds.patient.title_singular') }}</span>
-           {{--  <button class="btn btn-danger" type="submit" form="patient-form">
-                <i class="fa fa-save"></i> {{ trans('global.save') }}
-            </button>--}}
+
         </div>
 
         <div class="card-body">
             <form method="POST" action="{{ route("admin.patients.store") }}" enctype="multipart/form-data" id="patient-form">
                 @csrf
+                 <button class="btn btn-danger" type="submit" form="patient-form">
+                <i class="fa fa-save"></i> {{ trans('global.save') }}
+          </button>
                 <div class="row">
                     <div class="form-group col-md-3">
                         <label class="required" for="fullname">

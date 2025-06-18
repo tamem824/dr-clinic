@@ -208,6 +208,10 @@ return [
             'deleted_at_helper' => ' ',
         ],
     ],
+    'endoscopy' => [
+        'title' => 'Endoscopies',
+    ],
+
     'buttons' => [
         'add_patient'    => 'Add Patient',
         'add_diagnosis'  => 'Add Diagnosis',

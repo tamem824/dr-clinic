@@ -13,6 +13,7 @@
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>
+            <div class="table-responsive">
             <table class="table table-bordered table-striped">
                 <tbody>
                     <tr>
@@ -133,7 +134,8 @@
                     </tr>
                 </tbody>
             </table>
-
+            </div>
+            <div class="table-responsive">
             <div class="card mt-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <span>{{ trans('cruds.diagnosis.title_singular') }}</span>
@@ -183,6 +185,7 @@
                             @endforeach
                             </tbody>
                         </table>
+                </div>
                     @else
                         <p>{{ trans('cruds.diagnosis.no_records')  }}</p>
                     @endif

@@ -24,7 +24,7 @@ class PatientController extends Controller
     {
         abort_if(Gate::denies('patient_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $patients = Patient::select('id', 'patient_number', 'fullname', 'gender', 'mobile', 'national_id')->get();
+        $patients = Patient::select('id', 'patient_number', 'fullname', 'gender', 'mobile', 'national_id')->orderBy('id','desc')->get();
 
 
         return view('admin.patients.index', compact('patients'));
@@ -135,4 +135,6 @@ class PatientController extends Controller
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }
+
+
 }
